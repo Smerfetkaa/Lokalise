@@ -1,0 +1,339 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  list-style-type: none;
+  text-decoration: none;
+  color: #000000;
+}
+@mixin flex($display, $dir, $align) {
+  display: $display;
+  flex-direction: $dir;
+  align-items: $align;
+}
+
+@mixin font($weight, $size, $l-height) {
+  font-family: Roboto Flex;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $l-height;
+}
+
+main {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.header,
+.header__logo,
+.header__menu,
+.header__button {
+  @include flex(flex, row, center);
+  flex-wrap: wrap;
+}
+.header {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #cccccc;
+  padding: 0 5%;
+
+  &__logo img {
+    margin-left: 8%;
+  }
+  .menu {
+    &__item {
+      padding: 30px 20px;
+      @include font(400, 15px, 20px);
+    }
+  }
+}
+
+.button {
+  @include font(600, 16px, 50px);
+  padding: 0 25px;
+  margin: 0 5px;
+  &--white {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: black;
+  }
+  &--orange {
+    background: #ff6336;
+    color: #ffffff;
+  }
+  &--black {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: black;
+    color: #ffffff;
+  }
+}
+
+.intro {
+  padding: 100px 0 140px 0;
+  @include flex(flex, row, stretch);
+  flex-wrap: wrap;
+  justify-content: space-around;
+  &__text {
+    @include flex(flex, column, flex-start);
+    max-width: 40vw;
+    justify-content: space-evenly;
+  }
+  &__title {
+    @include font(600, 65px, 70px);
+  }
+  &__description {
+    @include font(400, 25px, 35px);
+  }
+  &__ps {
+    @include font(400, 15px, 25px);
+  }
+  &__img {
+    max-width: 60vw;
+  }
+  &__button {
+    @include flex(flex, row, center);
+  }
+}
+.box {
+  background: #ff9c7d;
+  height: 30vh;
+  @include flex(flex, column, stretch);
+  justify-content: space-evenly;
+
+  &__list {
+    @include flex(flex, row, center);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  &__title {
+    align-self: center;
+  }
+}
+.title {
+  @include font(600, 50px, 60px);
+}
+.description {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(550px, 50%));
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-row-gap: 10px;
+
+  &__column {
+    padding: 20% 25% 20% 5%;
+  }
+  &__text {
+    @include font(400, 20px, 30px);
+    margin: 10% 0;
+  }
+  &__link {
+    @include font(600, 20px, 30px);
+  }
+
+  &__img {
+    width: 70%;
+    height: auto;
+  }
+}
+
+.exploitation {
+  padding: 0 3%;
+  background: #fff8e4;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
+  grid-template-rows: 3fr 2fr 2fr 1fr;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+  grid-template-areas: "name name name";
+  justify-items: center;
+  align-items: center;
+  grid-column-gap: 10%;
+  grid-row-gap: 5%;
+  &__title {
+    grid-area: name;
+  }
+
+  &__column {
+    text-align: center;
+  }
+  &__name {
+    @include font(600, 25px, 35px);
+    margin: 5% 0;
+  }
+  &__text {
+    @include font(400, 18px, 25px);
+  }
+}
+
+.boosting {
+  padding: 0 3%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
+  grid-template-rows: 2fr 4fr 1fr;
+  grid-auto-flow: row;
+  grid-template-areas: "name name name";
+  justify-items: center;
+  align-items: center;
+  column-gap: 5%;
+  &__name {
+    grid-area: name;
+  }
+  &__title {
+    @include font(600, 30px, 40px);
+    margin-top: 60px;
+  }
+  &__text {
+    @include font(400, 20px, 30px);
+    margin: 50px 0;
+  }
+  &__link {
+    @include font(400, 20px, 30px);
+    text-decoration: underline;
+  }
+}
+.review {
+  padding: 3% 3%;
+  background: #c9e8f2;
+  @include flex(flex, row-reverse, center);
+  justify-content: space-around;
+  flex-wrap: wrap;
+  &__content {
+    width: 60vw;
+  }
+  &__img {
+    max-width: 310px;
+  }
+  &__text {
+    @include font(400, 30px, 40px);
+  }
+  &__person {
+    @include font(400, 15px, 25px);
+    margin: 25px 0 5px 0;
+  }
+}
+.cake {
+  padding: 3% 3%;
+  @include flex(flex, row, center);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #dabc98;
+  &__content {
+    width: 30vw;
+    @include flex(flex, row, center);
+    justify-content: space-evenly;
+    border-left: 1px solid black;
+  }
+  &__text {
+    @include font(600, 35px, 50px);
+  }
+  &__item {
+    @include flex(flex, column, flex-start);
+    &:first-child {
+      margin-right: 2%;
+    }
+  }
+  .item {
+    &__stars {
+      margin: 15px 0;
+    }
+    &__text {
+      @include font(400, 15px, 25px);
+      letter-spacing: 0.75px;
+    }
+  }
+}
+.integration {
+  @include flex(flex, column, center);
+  padding: 6% 20%;
+  text-align: center;
+
+  &__title {
+    @include font(600, 65px, 75px);
+  }
+  &__text {
+    @include font(400, 25px, 30px);
+    margin: 20px 0;
+  }
+  &__img {
+    max-width: 100%;
+    height: auto;
+  }
+  &__button {
+    margin-top: 30px;
+  }
+}
+.TryItFree {
+  @include flex(flex, column, center);
+  background: #ff9c7d;
+  padding: 6% 30%;
+  text-align: center;
+  &__title {
+    @include font(600, 65px, 75px);
+  }
+  &__text {
+    @include font(400, 20px, 30px);
+    margin: 25px 0 55px 0;
+  }
+}
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  row-gap: 20px;
+  padding: 5% 3% 0 3%;
+
+  .sidebar {
+    @include flex(flex, column, flex-start);
+
+    &__title {
+      @include font(600, 40px, 50px);
+    }
+    &__img {
+      margin: 30px 0;
+    }
+    &__logo {
+      max-width: 80px;
+    }
+    &__text {
+      @include font(400, 20px, 30px);
+      margin: 15px 0;
+    }
+    &__link {
+      @include font(600, 20px, 30px);
+    }
+  }
+  .list {
+    @include flex(flex, row, flex-start);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    &__title {
+      @include font(600, 20px, 25px);
+    }
+    &__item {
+      @include font(400, 15px, 15px);
+      margin-bottom: 15px;
+      &:first-child {
+        margin-top: 25px;
+      }
+    }
+  }
+  .holder {
+    @include flex(flex, row, center);
+    justify-content: space-between;
+    grid-area: 2/1/3/3;
+    border-top: 1px solid black;
+    padding: 2% 0;
+    &__conteiner {
+      display: inline-flex;
+      align-items: center;
+      max-width: 25vw;
+    }
+    &__text {
+      @include font(400, 12px, 15px);
+    }
+    &__logo {
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+}
